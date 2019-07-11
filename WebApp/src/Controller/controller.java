@@ -38,12 +38,12 @@ public class controller extends HttpServlet {
             String app1="";
             String key="";
             String value="";
-            facade r = new facade();
+            newuser r = new newuser();
             r.register(v1, v2);
 
             try {
                 Connection conn;
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
 
                 PreparedStatement p3;
                 p3 = conn.prepareStatement
@@ -54,10 +54,7 @@ public class controller extends HttpServlet {
                     date11 = r1.getString("dateofsignup");
                     last1 = r1.getString("lastsign");
                     app1=r1.getString("lastsign1");
-                    key=r1.getString("key1");
-
-
-                    value=r1.getString("value1");
+                   
 
                 }
 
@@ -68,8 +65,6 @@ public class controller extends HttpServlet {
             request.setAttribute("date", date11);
             request.setAttribute("l", last1);
             request.setAttribute("l1",app1);
-            request.setAttribute("k1",key);
-            request.setAttribute("v1",value);
             request.getRequestDispatcher("/UserAccount.jsp").forward(request, response);
 
 
@@ -111,12 +106,12 @@ public class controller extends HttpServlet {
             String key="";
             String value="";
 
-            facade c = new facade();
+            Check c= new Check();
             String val = c.checker(v1, v2);
             if (val.equals("SUCCESS")) {
                 try {
                     Connection con = DriverManager.getConnection(
-                            "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+                            "jdbc:mysql://localhost:3306/project", "root1", "123");
 
                     PreparedStatement p2 = con.prepareStatement
                             ("select * from details where Email=?");
@@ -126,14 +121,9 @@ public class controller extends HttpServlet {
                         date1 = resultSet.getString("dateofsignup");
                         last = resultSet.getString("lastsign");
                         app=resultSet.getString("lastsign1");
-                        key=resultSet.getString("key1");
-                        keyy = new StringBuilder(key);
-                        keyy.deleteCharAt(0);
-
-                        value=resultSet.getString("value1");
-                        valuee = new StringBuilder(value);
-                        valuee.deleteCharAt(0);
-                    }
+                 
+             
+                                 }
 
 
                 } catch (SQLException e) {
@@ -143,8 +133,7 @@ public class controller extends HttpServlet {
                 request.setAttribute("date", date1);
                 request.setAttribute("l", last);
                 request.setAttribute("l1",app);
-                request.setAttribute("k1",keyy);
-                request.setAttribute("v1",valuee);
+             
                 request.getRequestDispatcher("/UserAccount.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
@@ -160,7 +149,7 @@ public class controller extends HttpServlet {
 
 
 
-        /*if(v4.equals("Update"))
+        if(v4.equals("Update"))
 
         {
             String o1 = request.getParameter("m");
@@ -174,7 +163,7 @@ public class controller extends HttpServlet {
             try {
                 Connection con5;
                 con5 = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "1234");
+                        "jdbc:mysql://localhost:3306/project", "root1", "123");
 
                 PreparedStatement p5 = con5.prepareStatement
                         ("select * from details where Email=?");
@@ -195,8 +184,8 @@ public class controller extends HttpServlet {
             request.setAttribute("l", last11);
             request.setAttribute("l1",app11);
             request.getRequestDispatcher("/UserAccount.jsp").forward(request,response);
-        }*/
-        if(v4.equals("Add"))
+        }
+        /*if(v4.equals("Add"))
         {
 
             String o1 = request.getParameter("m");
@@ -213,7 +202,7 @@ public class controller extends HttpServlet {
             try {
                 Connection con5;
                 con5 = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+                        "jdbc:mysql://localhost:3306/project", "root1", "123");
 
                 PreparedStatement p5 = con5.prepareStatement
                         ("select * from details where Email=?");
@@ -248,8 +237,8 @@ public class controller extends HttpServlet {
             request.getRequestDispatcher("/UserAccount.jsp").forward(request,response);
 
 
-        }
-        if(v4.equals("Remove"))
+        }*/
+        /*if(v4.equals("Remove"))
         {       String date111="";
             String last11="";
             String app11="";
@@ -263,7 +252,7 @@ public class controller extends HttpServlet {
             try {
 
                 Connection cr;
-                cr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+                cr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
                 PreparedStatement pr1 = cr.prepareStatement("select * from details where Email=?");
                 pr1.setString(1, o1);
                 rr1 = pr1.executeQuery();
@@ -306,7 +295,7 @@ public class controller extends HttpServlet {
             request.setAttribute("v1",valuee);
 
             request.getRequestDispatcher("/UserAccount.jsp").forward(request,response);
-        }
+        }*/
 
 
     }

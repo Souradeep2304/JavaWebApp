@@ -12,7 +12,7 @@ public class appdate {
 
 
             Connection con4 = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+                    "jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement p4=con4.prepareStatement("update details set lastsign1 = NOW() where Email =?");
             p4.setString(1,u);
             p4.executeUpdate();

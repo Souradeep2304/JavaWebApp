@@ -16,7 +16,7 @@ public class Check {
 
 
             Connection con3= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false","root1","123");
+                    "jdbc:mysql://localhost:3306/project","root1","123");
             statement = con3.createStatement();
             resultSet = statement.executeQuery("select * from details");
             while (resultSet.next())

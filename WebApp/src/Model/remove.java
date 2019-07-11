@@ -10,7 +10,7 @@ public class remove {
         try {
             String k2=k.replace(","+k1,"");
             String v2=v.replace(","+v1,"");
-            Connection conr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "1234");
+            Connection conr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "1234");
             PreparedStatement pr = conr.prepareStatement("update details set key1=?,value1=? where Email=?");
             pr.setString(1,k2);
             pr.setString(2,v2);

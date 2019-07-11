@@ -10,7 +10,7 @@ public class keyvalue {
     public void updkv(String k,String v,String u)
     {
         try {
-            Connection conk = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "1234");
+            Connection conk = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "1234");
             PreparedStatement pk=conk.prepareStatement("update details set key1=CONCAT(key1,?,?),value1=CONCAT(value1,?,?) where Email=?");
             pk.setString(1,",");
             pk.setString(2,k);

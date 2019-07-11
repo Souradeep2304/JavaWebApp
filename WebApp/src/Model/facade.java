@@ -8,7 +8,7 @@ public class facade {
         try {
             String kk="";
             String vv="";
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement p1=con.prepareStatement("insert into details values (?,?,?,?,NOW(),NOW(),NOW()) ");
             p1.setString(1,u);
             p1.setString(2,p);
@@ -35,7 +35,7 @@ public class facade {
 
 
             Connection con3= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false","root1","123");
+                    "jdbc:mysql://localhost:3306/project","root1","123");
             statement = con3.createStatement();
             resultSet = statement.executeQuery("select * from details");
             while (resultSet.next())
@@ -68,7 +68,7 @@ public class facade {
     public void dell(String u)
     {
         try {
-            Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+            Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement p4 = con4.prepareStatement("delete from details where Email=?");
             p4.setString(1,u);
             p4.execute();
@@ -86,7 +86,7 @@ public class facade {
     public void updkv(String k,String v,String u)
     {
         try {
-            Connection conk = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+            Connection conk = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement pk=conk.prepareStatement("update details set key1=CONCAT(key1,?,?),value1=CONCAT(value1,?,?) where Email=?");
             pk.setString(1,",");
             pk.setString(2,k);
@@ -106,7 +106,7 @@ public class facade {
         try {
             String k2=k.replace(","+k1,"");
             String v2=v.replace(","+v1,"");
-            Connection conr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+            Connection conr = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement pr = conr.prepareStatement("update details set key1=?,value1=? where Email=?");
             pr.setString(1,k2);
             pr.setString(2,v2);

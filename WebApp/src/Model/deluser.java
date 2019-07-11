@@ -11,7 +11,7 @@ public class deluser {
     public void dell(String u)
     {
         try {
-            Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?autoReconnect=true&useSSL=false", "root1", "123");
+            Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root1", "123");
             PreparedStatement p4 = con4.prepareStatement("delete from details where Email=?");
             p4.setString(1,u);
             p4.execute();
